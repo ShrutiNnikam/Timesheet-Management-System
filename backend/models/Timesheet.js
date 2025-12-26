@@ -5,6 +5,7 @@ const timesheetSchema = new mongoose.Schema({
     employeeName: String,
     date: String,
     work: String,
+    hours: Number,
     rating: Number,
     locked: { type: Boolean, default: false }
 });
