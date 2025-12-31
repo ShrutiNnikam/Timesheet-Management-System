@@ -1,0 +1,54 @@
+body {
+  background: #f2f4f7;
+  font-family: Arial;
+}
+
+.container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 25px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+h2 {
+  text-align: center;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: rgb(225, 65, 65);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.link {
+  color: rgb(226, 114, 114);
+  cursor: pointer;
+  text-align: center;
+}
+
+.container button {
+  margin-top: 10px;
+}
+
+.card button {
+  margin: 5px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
