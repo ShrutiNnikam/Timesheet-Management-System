@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
+const API = "https://timesheet-management-system-1m1z.onrender.com";
+
 function App() {
   const [page, setPage] = useState("login");
 
@@ -20,7 +22,7 @@ function Login({ setPage }) {
 
   const login = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/login", { name, password, role });
+      const res = await axios.post(`${API}/api/login`, { name, password, role });
       localStorage.setItem("name", name);
       localStorage.setItem("employeeId", res.data.userId);
       setPage(res.data.role);
@@ -50,7 +52,7 @@ function Register({ setPage }) {
   const [password, setPassword] = useState("");
 
   const register = async () => {
-    await axios.post("http://localhost:5000/api/register", { name, password, managerId: "ADMIN01" });
+    await axios.post(`${API}/api/register`, { name, password, managerId: "ADMIN01" });
     setPage("login");
   };
 
@@ -75,8 +77,8 @@ function EmployeeDashboard({ setPage }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const sheetRes = await axios.get(`http://localhost:5000/api/timesheet/my/${employeeId}?date=${today}`);
-      const totalRes = await axios.get(`http://localhost:5000/api/timesheet/total/${employeeId}`);
+      const sheetRes = await axios.get(`${API}/api/timesheet/my/${employeeId}?date=${today}`);
+      const totalRes = await axios.get(`${API}/api/timesheet/total/${employeeId}`);
 
       setSheet(sheetRes.data);
       setTotalHours(totalRes.data.totalHours);
@@ -91,7 +93,7 @@ function EmployeeDashboard({ setPage }) {
 
   const submit = async () => {
     try {
-      await axios.post("http://localhost:5000/api/timesheet/submit", {
+      await axios.post(`${API}/api/timesheet/submit`, {
         employeeId,
         employeeName: localStorage.getItem("name"),
         date: today,
@@ -132,12 +134,12 @@ function ManagerDashboard({ setPage }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/timesheet/all").then(res => setData(res.data));
+    axios.get(`${API}/api/timesheet/all`).then(res => setData(res.data));
   }, []);
 
   const rate = async (id, rating) => {
-    await axios.post("http://localhost:5000/api/timesheet/rate", { id, rating });
-    const res = await axios.get("http://localhost:5000/api/timesheet/all");
+    await axios.post(`${API}/api/timesheet/rate`, { id, rating });
+    const res = await axios.get(`${API}/api/timesheet/all`);
     setData(res.data);
   };
 
