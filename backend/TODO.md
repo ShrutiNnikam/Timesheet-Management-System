@@ -1,4 +1,4 @@
-- [ ] Create .env file with MONGO_URI
-- [ ] Add dotenv to package.json dependencies
-- [ ] Update index.js to use environment variables
-- [ ] Ensure .env is in .gitignore
+- [x] Create .env file with MONGO_URI
+- [x] Add dotenv to package.json dependencies
+- [x] Update index.js to use environment variables
+- [x] Ensure .env is in .gitignore
